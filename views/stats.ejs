@@ -1,0 +1,82 @@
+<div class="grid-container">
+
+
+  <main class="main-container">
+    <div class="main-title">
+      <h2>DASHBOARD</h2>
+    </div>
+
+    <div class="main-cards">
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>ACTIVE DAYS</h3>
+          <span class="material-icons-outlined">inventory_2</span>
+        </div>
+        <h1>249</h1>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>MOST LANGUAGES USED</h3>
+
+        </div>
+        <ul>
+          <li>python</li>
+          <li>html</li>
+          <li>javascript</li>
+        </ul>
+
+      </div>
+
+ 
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>ATTENDED CONTESTS</h3>
+          <span class="material-icons-outlined">groups</span>
+        </div>
+        <h1></h1>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>DAILY STREAK</h3>
+          <span class="material-icons-outlined">notification_important</span>
+        </div>
+        <h1><%= user.dailyStreak %></h1>
+      </div>
+
+    </div>
+
+    <div class="charts">
+
+      <div class="charts-card">
+        <h2 class="chart-title">DAILY SOLVES</h2>
+
+        <div id="bar-chart"></div>
+      </div>
+
+      <div class="charts-card">
+        <h2 class="chart-title">MONTHLY SOLVES</h2>
+        <div id="bar-chart1"></div>
+      </div>
+
+      <div class="charts-card">
+        <h2 class="chart-title">MONTHLY CONTEST SOLVES</h2>
+        <div id="bar-chart2"></div>
+      </div>
+
+    </div>
+  </main>
+  <!-- End Main -->
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+
+<script src="js/scripts-sts.js"></script>
+

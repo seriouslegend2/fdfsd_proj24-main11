@@ -1,0 +1,114 @@
+<div class="upabve">
+    <div class="profile-details">
+        <div class="right-details">
+            <img src=<%= user.avatarPath %> alt="Profile Photo">
+        </div>
+        <div class="container">
+            <div class="left-details">
+                <%- include('changeAvatar') %>
+                <h2 class="name"><%= user.username %></h2>
+                <p class="designation"><%= user.type %></p>
+                <p class="company"><%= user.college %></p>
+            </div>
+        </div>
+    </div>
+    <div class="about-me">
+
+        <a href="/editdata">
+            <button class="btn">
+                <span class="icon">
+                    <svg viewBox="0 0 175 80" width="40" height="40">
+                        <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                        <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                        <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    </svg>
+                </span>
+                <span class="text">COMPLETE YOUR PROFILE</span>
+            </button>
+           
+        </a>
+
+        <h1 class="title">About Me</h1>
+        <div class="info">
+            <% if (user.aboutme && user.aboutme.bio) { %>
+                <p class="description"><%= user.aboutme.bio %></p>
+            <% } else { %>
+                <p class="description">No bio available</p>
+            <% } %>
+        </div>
+        <div class="info">
+            <h2 class="subtitle">Experience</h2>
+            <ul class="description">
+                <% if (user.aboutme && user.aboutme.experience && user.aboutme.experience.length) { %>
+                    <% user.aboutme.experience.forEach(function(exp) { %>
+                        <li><%= exp %></li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No experience available</li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="info">
+            <h2 class="subtitle">Education</h2>
+            <ul class="description">
+                <% if (user.aboutme && user.aboutme.education && user.aboutme.education.length) { %>
+                    <% user.aboutme.education.forEach(function(edu) { %>
+                        <li><%= edu %></li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No education available</li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="skillset">
+    <% if (user.skills && user.skills.length) { %>
+        <% user.skills.forEach(function(skill) { %>
+            <div class="quadrant">
+                <div class="inner-grid">
+                    <div class="text-box">
+                        <h2><%= skill.title %></h2>
+                        <p><%= skill.description %></p>
+                    </div>
+                    <div class="image-box">
+                        <!-- Add your icon or image here -->
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No skills available</p>
+    <% } %>
+</div>
+
+
+
+
+
+<!-- Hidden edit form -->
+
+
+
+
+<div class="tab-content" id="tab1" >
+    <div class="badge-section" id="badges">
+        <h2 style="padding-bottom: 20px; font-size: 2rem; color:#4CAF50;
+        ">Badges</h2>
+        <section class="badge-filters" id="mmb">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="participation">Participation</button>
+            <button class="filter-btn" data-filter="position1">1st Position</button>
+            <button class="filter-btn" data-filter="position2">2nd Position</button>
+            <button class="filter-btn" data-filter="position3">3rd Position</button>
+        </section>
+        <div class="badges">
+            <!-- Badge items will be dynamically added here -->
+        </div>
+    </div>
+</div>
+
+
+
+</div>

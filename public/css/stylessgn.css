@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background-color: #000000;
+}
+
+.background{
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.container{
+    margin-top: 200px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.typingText1::after{
+    content: ".";
+    position: absolute;
+    right: -65px;
+    color: white;
+    background-color: #1a1a1a;
+    width: 100%;
+    animation: typingHeaderText 3.2s steps(30)  forwards,
+                line 0.9s 3;
+}
+
+.typingText2::after{
+    content: "_";
+    position: absolute;
+    right: 42px;
+    color: white;
+    
+    background-color: #1a1a1a;
+    width: 100%;
+    animation: typingHeaderText 2.8s steps(27)  forwards,
+                line 0.9s infinite;
+                animation-delay: 2.8s;
+}
+
+/*terminal*/
+.card {
+    position: absolute;
+    border: 1px solid #333;
+    background-color: #1a1a1a;;
+    color: rgb(255, 255, 255);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+    padding: 0px 0px;
+    width: 540px;
+    height: 290px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    /* box-shadow: 10px 10px 200px 0.1px rgba(0,0,0,1), -1px -1px 1px #3d3d3d; */
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cardHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5em;
+    background-color: #333;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 0 0.7em;
+    box-sizing: border-box;
+}
+
+.cardTitle {
+    /* float: right; */
+    position:fixed;
+    line-height: 1.5em;
+    font-size:large;
+    font-weight: 570;
+    color: #eee;
+    margin-left: 190px;
+}
+
+.cardControls{
+    float: left;
+}
+
+.Control {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    margin-left: 1px;
+    border-radius: 50%;
+    background-color: #777;
+}
+
+.redControl {
+    background-color: #e33;
+}
+
+.yellowControl {
+    background-color: #ee0;
+}
+
+.greenControl {
+    background-color: #0b0;
+}
+
+
+@keyframes typingHeaderText {
+    100% {
+    width: 43%;
+    }
+    
+    0% {
+    width: 100%;
+    animation-duration: 2s; 
+    }
+}
+@keyframes typing {
+    100% {
+    width: 0%;
+    }
+
+    0% {
+    width: 100%; 
+    animation-duration: 100s; 
+    }
+}
+@keyframes line {
+    50%{
+        color: transparent;
+    }
+}

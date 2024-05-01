@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CodeRealms</title>
+    <meta name="description" content="Login - elseSection Template">
+    <meta name="author" content="Lorenzo Angelino aka MrLolok">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/stylessgn.css">
+    <link rel="icon" href="browserImage.png" type="image">
+    <style>
+        .typingTextContainer {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            padding: 0%;
+            width: 200%;
+            margin-top: -23%;
+        }
+
+        .typingText1 {
+            padding: 7px;
+            width: 190%;
+            font-size: 18px;
+            color: #C1C3C6;
+        }
+
+        .typingText2 {
+            padding: 7px;
+            font-size: 18px;
+            color: #C1C3C6;
+        }
+
+        .typingText1 span {
+            color: rgb(233, 60, 60);
+        }
+
+        .typingText2 span {
+            color: rgb(84, 235, 99);
+        }
+
+        .userChoice {
+            width: 110px;
+            height: 40px;
+            color: #fff;
+            background: #1a1a1a;
+            font-size: 17px;
+            text-decoration: none;
+            margin-top: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 0 #000;
+            transition: 0.5s;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .userChoice:hover {
+            box-shadow: 8px 10px 0 #000;
+            background: white;
+            border: 2px solid #000;
+            color: #000;
+            margin-top: -20px;
+            font-size: 85%;
+        }
+
+        .userChoice span {
+            margin-left: 0px;
+            width: 0;
+            overflow: hidden;
+            transition: 0.1s;
+        }
+
+        .userChoice:hover span {
+            width: 40px;
+        }
+
+        .btns {
+            width: 525px;
+            height: 250px;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <video class="background" autoplay loop muted playsinline >
+        <!-- Update the video source to use Express static file serving -->
+        <source src="/videos/background.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="card">
+            <div class="cardHeader" >
+                <div class="cardTitle">$Code-Realms</div>
+                <div class="cardControls">
+                    <div class="Control redControl"></div>
+                    <div class="Control yellowControl"></div>
+                    <div class="Control greenControl"></div>
+                </div>
+            </div>
+            <div class="typingTextContainer">
+                <div class="typingText1">
+                    Venture Deep Into the <span>CodeRealms</span>
+                </div>
+                <div class="typingText2">
+                    Choose your <span>Character?</span>
+                </div>
+            </div>
+
+            <div class="btns">
+                <!-- Update the anchor tags to use Express route paths -->
+                <a href="/signin" class="userChoice">
+                    <span>Im a</span> User 
+                </a>
+                <a href="/login" class="userChoice">
+                    <span>Im a</span> Host 
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

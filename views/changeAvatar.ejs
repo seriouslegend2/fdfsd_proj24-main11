@@ -1,0 +1,224 @@
+<%
+    const avatars = [
+    "/imgs/avatars/memo_2.png",
+    "/imgs/avatars/memo_3.png",
+    "/imgs/avatars/memo_4.png",
+    "/imgs/avatars/memo_5.png",
+    "/imgs/avatars/memo_6.png",
+    "/imgs/avatars/memo_7.png",
+    "/imgs/avatars/memo_8.png",
+    "/imgs/avatars/memo_9.png",
+   
+    "/imgs/avatars/memo_11.png",
+    "/imgs/avatars/memo_12.png",
+    "/imgs/avatars/memo_13.png",
+    "/imgs/avatars/memo_14.png",
+    "/imgs/avatars/memo_15.png",
+    "/imgs/avatars/memo_16.png",
+    "/imgs/avatars/memo_17.png",
+    "/imgs/avatars/memo_18.png",
+    "/imgs/avatars/memo_19.png",
+    "/imgs/avatars/memo_20.png",
+    "/imgs/avatars/memo_21.png",
+    "/imgs/avatars/memo_22.png",
+    "/imgs/avatars/memo_23.png",
+   
+    "/imgs/avatars/memo_24.png",
+    "/imgs/avatars/memo_25.png",
+    "/imgs/avatars/memo_26.png",
+    "/imgs/avatars/memo_27.png",
+    "/imgs/avatars/memo_28.png",
+    "/imgs/avatars/memo_29.png",
+    "/imgs/avatars/memo_30.png",
+    "/imgs/avatars/memo_31.png",
+    "/imgs/avatars/memo_32.png"
+    
+
+    ]
+%>
+
+
+<div class="change-avatar">
+    <button onclick="openCA(this)" class="button">Change Avatar</button>
+    <div class="change-avatar-cover">
+        <div class="change-avatar-inner">
+            <div class="avatars-container">
+                <span class="material-symbols-outlined close" onclick="closeCA(this)" ><i class="fa-solid fa-xmark"></i></span>
+                <% for (let index = 0; index < avatars.length; index++) { %>
+                    <div onclick="selectAvatar(this, '<%= avatars[index] %>')">
+                        <img class="avat" src="<%= avatars[index] %>" alt="">
+                    </div>
+                <% }; %>
+            </div>
+            <button onclick="updateAvatarIndex(this)" class="button" style="width: 40px;">Done</button>
+        </div>
+    </div>
+</div>
+
+<style>
+
+.change-avatar-cover {
+    width:80px;
+    display: none;
+}
+
+.change-avatar-cover.modal {
+    position: fixed;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+}
+
+.avatars-container img {
+        /* Add your CSS styles for avatar images here */
+        width: 120px; /* Example: Set width to 100px */
+        height: 120px; /* Example: Set height to 100px */
+        border-radius: 50%; /* Example: Make the avatar round */
+    }
+
+    .avatars-container::-webkit-scrollbar {
+    display: none;
+}
+.change-avatar-inner {
+    background-color: var(--buzz-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    gap: 3rem;
+    
+    width: 90%;
+    position: relative;
+}
+
+.change-avatar-inner button {
+    min-width: 50%;
+    font-size: 1.2rem;
+}
+
+.avatars-container {
+    display: flex;
+   width: 60%;
+    max-width: 90%;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-around;
+    overflow: auto;
+    max-height: 80vh;
+    margin-top: 5%;
+    margin-bottom: -5%;
+   
+
+}
+
+/*button change avatar*/
+.button {
+  padding: 15px 20px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  z-index: 1;
+}
+
+.button::after,
+.button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.button::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+</style>
+
+<script>
+    let selectedAvatarPath; // Variable to store selected avatar path
+
+    function openCA(btn) {
+        const superDiv = btn.closest('.change-avatar').querySelector('.change-avatar-cover');
+        superDiv.classList.add('modal');
+    }
+
+    function closeCA(close) {
+        const superDiv = close.closest('.change-avatar').querySelector('.change-avatar-cover');
+        superDiv.classList.remove('modal');
+    }
+
+    function selectAvatar(div, path) {
+        const container = div.parentNode;
+        const avatars = container.querySelectorAll('.avatar');
+        avatars.forEach(function (avatar) {
+            avatar.classList.remove('selected');
+        });
+        div.querySelector('img').classList.add('selected');
+        selectedAvatarPath = path; // Store the selected avatar path
+    }
+
+    function updateAvatarIndex(btn) {
+        const userId = '<%= user._id %>'; // Assuming you have the user's ID available
+        fetch(`/users/${userId}/update-avatar`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ avatarPath: selectedAvatarPath }) // Send the selected avatar path
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+                closeCA(btn);
+            } else {
+                throw new Error('Failed to update avatar path');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>

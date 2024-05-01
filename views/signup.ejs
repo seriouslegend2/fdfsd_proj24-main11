@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CodeRealms Sign-up</title>
+    <meta name="description" content="Login - elseSection Template">
+    <meta name="author" content="Lorenzo Angelino aka MrLolok">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" href="browserImage.png" type="image">
+    <style>
+        .form {
+            margin-top: 40px;
+            padding-top: 0px;
+        }
+        .typingTest {
+            padding: 0%;
+            margin-top: 40px;
+            margin-right: 162px;
+            color: #C1C3C6;
+        }
+        .elseSection {
+            margin-top: 40px;
+            margin-left: 10px;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            width: 85%;
+            border-top: 1px solid #C1C3C6;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <video class="background" autoplay loop muted playsinline >
+        <source src="/videos/background.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">        
+        <div class="card">
+            <div class="typingTest">
+                Welocme to CodeRealms!! <!-- Typo corrected to "Welcome" -->
+            </div>
+            <div class="cardHeader">
+                <div class="cardTitle">$sign-up</div>
+                <div class="cardControls">
+                    <div class="Control redControl"></div>
+                    <div class="Control yellowControl"></div>
+                    <div class="Control greenControl"></div>
+                </div>
+            </div>
+    
+            <form action="/signup" method="POST" class="form">
+                <div class="inputE">
+                    <div class="blinkText">Email: </div>
+                    <input name="email" type="email" required class="validate3" autocomplete="off">
+                </div>
+            
+                <div class="input">
+                    <div class="blinkText">Username:</div>
+                    <input name="username" type="text" required class="validate1" autocomplete="off">
+                </div>
+                
+                <div class="input">
+                    <div class="blinkText">Password:</div>
+                    <input name="password" type="password" required class="validate2" autocomplete="off">
+                </div>
+            
+                <button type="submit" class="ifButton">
+                    <span>
+                        Sign-up
+                    </span>
+                </button>
+            </form>
+            
+            <div class="elseSection">
+                Already have an account?
+                <a href="/signin"><button class="elseButton">
+                    <span>
+                        sign-in
+                    </span>
+                </button></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.form');
+    
+            form.addEventListener('ifButton', async (event) => {
+                event.preventDefault();
+    
+                const formData = new FormData(form);
+    
+                // Log the FormData object to check its content
+                console.log('FormData:', formData);
+    
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    body: formData,
+                });
+    
+                const responseData = await response.json();
+    
+                console.log('Server response:', responseData);
+    
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    document.getElementById('error-message').textContent = responseData.error;
+                }
+            });
+        });
+    </script>    
+</body>
+</html>

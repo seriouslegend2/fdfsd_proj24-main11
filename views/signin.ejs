@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CodeRealms Sign-in</title>
+    <meta name="description" content="Login - elseSection Template">
+    <meta name="author" content="Lorenzo Angelino aka MrLolok">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" href="browserImage.png" type="image">
+    <style>
+        .form {
+            margin-top: 60px;
+        }
+        .typingTest {
+            margin-top: 25px;
+            padding: 0%;
+            margin-right: 162px;
+            color: #C1C3C6;
+        }
+        .elseSection {
+            margin-top: 50px;
+            margin-left: 10px;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            width: 85%;
+            border-top: 1px solid #C1C3C6;
+        }
+    </style>
+</head>
+
+<body>
+    <video class="background" autoplay loop muted playsinline >
+        <source src="/videos/background.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">        
+        <div class="card">
+            <div class="typingTest">
+                Welocme to CodeRealms!! <!-- Typo corrected to "Welcome" -->
+            </div>
+            <div class="cardHeader">
+                <div class="cardTitle">$Sign-in</div>
+                <div class="cardControls">
+                    <div class="Control redControl"></div>
+                    <div class="Control yellowControl"></div>
+                    <div class="Control greenControl"></div>
+                </div>
+            </div>
+    
+            <form action="/signin" method="POST" class="form">
+                <div class="input">
+                    <div class="blinkText">Username:</div>
+                    <input name="username" type="text" required class="validate1" autocomplete="off">
+                </div>
+                
+                <div class="input">
+                    <div class="blinkText">Password:</div>
+                    <input name="password" type="password" required class="validate2" autocomplete="off">
+                </div>
+
+                <button class="ifButton">
+                    <span>
+                        Sign-in
+                    </span>
+                </button>
+            </form>
+
+            <div class="elseSection">
+                Don't have an account yet?
+                <a href="/signup"><button class="elseButton">
+                    <span>
+                        Sign-up
+                    </span>
+                </button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

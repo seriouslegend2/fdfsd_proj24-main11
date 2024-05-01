@@ -1,0 +1,74 @@
+<div id="editForm" style="display: none;">
+    <form action="/edit-profile" method="POST">
+        <!-- Fields for user details -->
+        <input type="text" name="address" placeholder="Address">
+        <input type="text" name="phoneNumber" placeholder="Phone Number">
+        <input type="text" name="instagramLink" placeholder="Instagram Link">
+        <input type="text" name="linkedinLink" placeholder="LinkedIn Link">
+        <input type="text" name="twitterLink" placeholder="Twitter Link">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="type" placeholder="Type">
+        <input type="text" name="college" placeholder="College">
+        <textarea name="aboutme[bio]" placeholder="Bio"></textarea>
+
+        <!-- Fields for experience -->
+        <div id="experienceFields">
+            <input type="text" name="aboutme[experience][]" placeholder="Experience">
+        </div>
+        <button type="button" onclick="addExperienceField()">Add Experience</button>
+
+        <!-- Fields for education -->
+        <div id="educationFields">
+            <input type="text" name="aboutme[education][]" placeholder="Education">
+        </div>
+        <button type="button" onclick="addEducationField()">Add Education</button>
+
+        <!-- Fields for skills -->
+        <div id="skillFields">
+            <input type="text" name="skills[0][title]" placeholder="Skill Title">
+            <input type="text" name="skills[0][description]" placeholder="Skill Description">
+        </div>
+        <button type="button" onclick="addSkillField()">Add Skill</button>
+
+        <!-- Add more fields as necessary -->
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+<script>
+    function addExperienceField() {
+        const container = document.getElementById("experienceFields");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "aboutme[experience][]";
+        input.placeholder = "Experience";
+        container.appendChild(input);
+    }
+
+    function addEducationField() {
+        const container = document.getElementById("educationFields");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "aboutme[education][]";
+        input.placeholder = "Education";
+        container.appendChild(input);
+        console.log("edu");
+    }
+
+    function addSkillField() {
+        const container = document.getElementById("skillFields");
+        const titleInput = document.createElement("input");
+        const descInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.name = `skills[${container.children.length}][title]`;
+        titleInput.placeholder = "Skill Title";
+        descInput.type = "text";
+        descInput.name = `skills[${container.children.length}][description]`;
+        descInput.placeholder = "Skill Description";
+        container.appendChild(titleInput);
+        container.appendChild(descInput);
+    }
+
+</script>

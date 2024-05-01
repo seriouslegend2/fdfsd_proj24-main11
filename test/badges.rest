@@ -1,0 +1,11 @@
+POST http://localhost:3030/badges/jlsjdf HTTP/1.1
+content-type: application/json
+
+{
+    "badges": [
+        { "kind": "position2", "label": "2nd Position Badge", "image": "./imgs/bdg1.png" },
+        { "kind": "position3", "label": "3rd Position Badge", "image": "./imgs/bdg1.png" },
+        { "kind": "position1", "label": "1st Position Badge", "image": "./imgs/bdg1.png" },
+        { "kind": "position3", "label": "3rd Position Badge", "image": "./imgs/bdg1.png" }
+    ]
+}
